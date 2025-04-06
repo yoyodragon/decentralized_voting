@@ -7,11 +7,12 @@
     
 </head>
 <body>
+    
   <div class="navbar">
     <div>Voter Portal</div>
-    <button class="nav-right">Logout</button>
+    <button onclick="window.location.href='..\\Results\\main.html'" class="nav-right">Go To Results.</button>
   </div>
-
+  
   <div class="vote-section">
     <h2>Select Your Candidate</h2>
     <form id="voteForm">
@@ -29,12 +30,7 @@
         <input type="radio" name="candidate" value="Candidate 2">
       </div>
 
-      <div class="candidate">
-        <img src="OIP.png" alt="Candidate 3">
-        <p>Candidate 3</p>
-        <span>Party C</span><br>
-        <input type="radio" name="candidate" value="Candidate 3">
-      </div>
+      
 
       <br><button type="submit" class="submit-btn">Submit Vote</button>
     </form>

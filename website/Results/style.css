@@ -7,6 +7,10 @@ body {
     padding: 0;
     text-align: center;
 }
+canvas {
+    max-width: 70vw;
+    max-height: 70vh;
+  }
 
 /* Navbar */
 .navbar {

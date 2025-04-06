@@ -118,7 +118,8 @@ body{
 #register-btn{
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
     width:80%;
-    height: 50%;
+    height: 25%;
+    margin-top:20%;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -176,7 +177,8 @@ body{
 #login-btn{
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
     width:80%;
-    height: 50%;
+    height: 25%;
+    margin-top:20%;
     display:flex;
     
     justify-content: center;

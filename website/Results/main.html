@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Election Results</title>
@@ -10,11 +12,11 @@
 <body>
     <nav class="navbar">
         <div class="nav-left">Election Results</div>
-        <button class="nav-right" onclick="goBack()">Back</button>
+        <button class="nav-right" onclick="window.location.href='..\\main page\\main.html'">Back</button>
     </nav>
 
-    <canvas id="resultsChart"></canvas>
-
+    <canvas id="myPieChart" width="200" height="200"></canvas>
+    
     <script src="script.js"></script>
 </body>
 </html>
