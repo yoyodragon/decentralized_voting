@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Management</title>
+    <link rel="stylesheet" href="style_admin.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">Candidate Management</div>
+        <button class="nav-right" onclick="goToResults()">Go to Results</button>
+    </nav>
+
+    <div class="buttons-container">
+        <button onclick="openPopup('addCandidatePopup')">Add Candidate</button>
+        <button onclick="openPopup('removeCandidatePopup')">Remove Candidate</button>
+    </div>
+
+    <div id="addCandidatePopup" class="popup">
+        <div class="popup-content">
+            <h2>Add Candidate</h2>
+            <input type="text" id="partyName" placeholder="Party Name">
+            <input type="text" id="candidateName" placeholder="Candidate Name">
+            <input type="file" id="candidateImage">
+            <button onclick="addCandidate()">Submit</button>
+            <button onclick="closePopup('addCandidatePopup')">Close</button>
+        </div>
+    </div>
+
+    <div id="removeCandidatePopup" class="popup">
+        <div class="popup-content">
+            <h2>Remove Candidate</h2>
+            <input type="text" id="removeCandidateName" placeholder="Candidate Name">
+            <button onclick="removeCandidate()">Submit</button>
+            <button onclick="closePopup('removeCandidatePopup')">Close</button>
+        </div>
+    </div>
+
+    <div class="carousel-container">
+        <div class="carousel">
+            <div id="carouselItems"></div>
+        </div>
+    </div>
+
+    <script src="script_admin.js"></script>
+</body>
+</html>

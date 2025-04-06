@@ -1,0 +1,211 @@
+body{
+    padding:0px;
+    margin:0px;
+}
+
+#login-flex{
+    display: flex;
+    
+    width:100%;
+    height:100vh;
+    padding:0px;
+    margin:0px;
+}
+
+#login-box{
+    background-color: aquamarine;
+    height:99.5%;
+    border: 1px solid black;
+    width:99%;
+    flex:1.5;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    
+}
+#blank{
+    background-color: aquamarine;
+    height:99.5%;
+    width:100%;
+    flex: 2;
+}
+
+#login-box-in{
+    background-color: white;
+    margin:10%;
+    border-radius: 10%;
+    height:80%;
+    width: 80%;
+    display:flex;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+    flex-direction: column;
+    contain: fill;
+}
+
+#choice{
+    height:100%;
+    
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#submit{
+    height:100%;
+    justify-content: center;
+    align-items: center;
+    display:flex;
+    
+}
+#login-content{
+    height:100%;
+    
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    place-items: center;
+    display:flex;
+    grid-template-columns: 1fr 1fr;
+}
+#uid{
+    height:100%;
+    align-items: flex-end;
+    
+    display:flex;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    
+}
+#pass{
+    height:100%;
+    display:flex;
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-start;
+    place-items: center;
+    
+    justify-content: center;
+    
+}
+
+#advo{
+    height:10%;
+    width: 80%;
+    flex:1;
+    display:flex;
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-end;
+    background-color:white;
+    margin-bottom: 20px;
+
+}
+#admin-btn{
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    width:80%;
+    height: 50%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#voter-btn{
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    width:80%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+}
+
+#register-btn{
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    width:80%;
+    height: 50%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#register-btn:hover{
+    background-color: aquamarine;
+    color:white;
+    box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.3);
+}
+#login-btn:hover{
+    background-color: aquamarine;
+    color:white;
+    box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+#voter-btn:hover{
+    background-color: aquamarine;
+    color:white;
+    box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.3);
+}
+#admin-btn:hover{
+    background-color: aquamarine;
+    color:white;
+    box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.3);
+}
+#register-btn.active {
+    background-color: aquamarine;
+  }
+  #login-btn.active {
+    background-color: aquamarine;
+  }
+  #admin-btn.active {
+    background-color: aquamarine;
+  }
+  #voter-btn.active {
+    background-color: aquamarine;
+  }
+
+  #register-btn.active:hover {
+    background-color: aquamarine;
+  }
+  #login-btn.active {
+    background-color: aquamarine;
+  }
+  #admin-btn.active {
+    background-color: aquamarine;
+  }
+  #voter-btn.active {
+    background-color: aquamarine;
+  }
+
+
+#login-btn{
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    width:80%;
+    height: 50%;
+    display:flex;
+    
+    justify-content: center;
+    align-items: center;
+}
+#reglog{
+    flex:1;
+    height:10%;
+    width: 80%;
+    display:flex;
+    grid-template-columns: 1fr 1fr;
+    
+
+}
+
+#login-text{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    
+    
+}
+
+
+#submit-btn{
+    border-radius: 20px;
+    height:50%;
+    width:40%;
+    font-size: 30px;
+    
+}
