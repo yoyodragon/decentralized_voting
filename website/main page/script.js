@@ -48,3 +48,9 @@ voter.addEvenetLister('hover', () =>{
     voter.style.backgroundColor = "aquamarine";
 });
 
+submit = document.getElementById("submit");
+
+submit.addEvenetLister("click", () =>{
+    window.location.href = "D:\\ved\\College\\decentralized_voting\\website\\voter\\main.html";
+});
+

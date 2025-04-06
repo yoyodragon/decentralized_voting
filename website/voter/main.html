@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Voter Page</title>
+  <link rel="stylesheet" href="./style.css">
+    
+</head>
+<body>
+  <div class="navbar">
+    <div>Voter Portal</div>
+    <button class="nav-right">Logout</button>
+  </div>
+
+  <div class="vote-section">
+    <h2>Select Your Candidate</h2>
+    <form id="voteForm">
+      <div class="candidate">
+        <img src="OIP.png" alt="Candidate 1">
+        <p>Candidate 1</p>
+        <span>Party A</span><br>
+        <input type="radio" name="candidate" value="Candidate 1">
+      </div>
+
+      <div class="candidate">
+        <img src="OIP.png" alt="Candidate 2">
+        <p>Candidate 2</p>
+        <span>Party B</span><br>
+        <input type="radio" name="candidate" value="Candidate 2">
+      </div>
+
+      <div class="candidate">
+        <img src="OIP.png" alt="Candidate 3">
+        <p>Candidate 3</p>
+        <span>Party C</span><br>
+        <input type="radio" name="candidate" value="Candidate 3">
+      </div>
+
+      <br><button type="submit" class="submit-btn">Submit Vote</button>
+    </form>
+  </div>
+
+  <div class="popup" id="popup">
+    <p id="popupMessage"></p>
+    <button onclick="closePopup()" class="submit-btn">Close</button>
+  </div>
+
+  <script src = "script.js"></script>
+
+</body>
+</html>

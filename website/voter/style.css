@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: black;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: aquamarine;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .nav-right {
+    background-color: black;
+    color: aquamarine;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .nav-right:hover {
+    background-color: aquamarine;
+    color: black;
+    border: 2px solid black;
+  }
+
+  .vote-section {
+    margin: 50px auto;
+    max-width: 800px;
+  }
+
+  .candidate {
+    display: inline-block;
+    margin: 20px;
+    border: 2px solid aquamarine;
+    border-radius: 10px;
+    padding: 20px;
+    width: 200px;
+    background-color: #f9f9f9;
+  }
+
+  .candidate img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid black;
+  }
+
+  .candidate input[type="radio"] {
+    margin-top: 10px;
+  }
+
+  .candidate p {
+    margin: 10px 0 5px;
+    font-weight: bold;
+  }
+
+  button.submit-btn {
+    margin-top: 30px;
+    padding: 15px 25px;
+    font-size: 18px;
+    background-color: aquamarine;
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  button.submit-btn:hover {
+    background-color: black;
+    color: aquamarine;
+  }
+
+  .popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
