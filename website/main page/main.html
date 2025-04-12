@@ -7,8 +7,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./style.css">
         
-    </head>
+        <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+              apiKey: "AIzaSyBFynKqy9_1bhevdpdAyFhhJChFWHlk3FI",
+              authDomain: "decentralized-voting-123.firebaseapp.com",
+              projectId: "decentralized-voting-123",
+              storageBucket: "decentralized-voting-123.firebasestorage.app",
+              messagingSenderId: "622124462253",
+              appId: "1:622124462253:web:5bdb161510125193049624"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+          </script>
+    </head onload = "loadWeb3();">
     <body>
+        
         <div>
             <div id = "login-flex">
                 <div id = "blank">
@@ -43,7 +64,7 @@
                             <div id = "adhaar">
                                 
                                 <div>
-                                    <input type="text" style = "border-radius: 20px;height: 2rem" id="password" placeholder="🏛️ Adhaar Number">
+                                    <input type="text" style = "border-radius: 20px;height: 2rem" id="adhaar" placeholder="🏛️ Adhaar Number">
                                 </div>
 
                             </div>
@@ -65,7 +86,7 @@
                         </div>
 
                         <div id = "submit">
-                            <button onclick="window.location.href='..\\voter\\main.html'"id = "submit-btn">Submit.</button>
+                            <button onclick="login();  "id = "submit-btn">Submit.</button>
                         </div>
                     </div>
 
@@ -73,6 +94,7 @@
             </div>
         </div>
         <script src="script.js"></script>
+        <script src ="../web3/web3_voting.js"></script>
     </body>
 
 </html>

@@ -8,15 +8,22 @@
     <title>Election Results</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    
+</head onload = "loadWeb3();">
+<body onload = "getAllCandidates();">
     <nav class="navbar">
         <div class="nav-left">Election Results</div>
         <button class="nav-right" onclick="window.location.href='..\\main page\\main.html'">Back</button>
     </nav>
-
-    <canvas id="myPieChart" width="200" height="200"></canvas>
     
+ 
+    <canvas id="myPieChart" width="200" height="200"></canvas>
+    <div id = "winnerDisplay" onload = "viewWinner();">
+        Winner: Candidate 1
+
+    </div>
+    <script src = "../web3/web3_voting.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

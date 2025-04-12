@@ -1,0 +1,46 @@
+!DOCTYPE html>
+<html>
+<head>
+    <title>Voting System DApp</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+</head>
+<body>
+    <h1>Voting System</h1>
+
+    <p><strong>Chairperson:</strong> <span id="chairperson"></span></p>
+
+    <h3>Add Candidate</h3>
+    <input type="text" id="candidateName" placeholder="Candidate Name">
+    <button onclick="addCandidate()">Add</button>
+
+    <h3>Remove Candidate</h3>
+    <input type="number" id="removeIndex" placeholder="Candidate Index">
+    <button onclick="removeCandidate()">Remove</button>
+
+    <h3>Start/Stop Voting</h3>
+    <button onclick="startVoting()">Start Voting</button>
+    <button onclick="stopVoting()">Stop Voting</button>
+
+    <h3>Register</h3>
+    <button onclick="register()">Register</button>
+
+    <h3>Login</h3>
+    <button onclick="login()">Login</button>
+    <p id="loginStatus"></p>
+
+    <h3>Vote</h3>
+    <input type="number" id="voteIndex" placeholder="Candidate Index">
+    <button onclick="vote()">Vote</button>
+
+    <h3>Declare Winner</h3>
+    <button onclick="declareWinner()">Declare</button>
+
+    <h3>View Winner</h3>
+    <button onclick="viewWinner()">View</button>
+    <p id="winnerDisplay"></p>
+
+    <script>
+        
+    </script>
+</body>
+</html>
