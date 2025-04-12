@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Firebase Phone Auth Test</title>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+</head>
+<body>
+  <h2>Phone OTP Authentication</h2>
+  <input type="text" id="phone" placeholder="+91XXXXXXXXXX" />
+  <div id="recaptcha-container"></div>
+  <button onclick="sendOTP()">Send OTP</button>
+
+  <br><br>
+
+  <input type="text" id="otp" placeholder="Enter OTP" />
+  <button onclick="verifyOTP()">Verify OTP</button>
+
+  <script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyBFynKqy9_1bhevdpdAyFhhJChFWHlk3FI",
+        authDomain: "decentralized-voting-123.firebaseapp.com",
+        projectId: "decentralized-voting-123",
+        storageBucket: "decentralized-voting-123.firebasestorage.app",
+        messagingSenderId: "622124462253",
+        appId: "1:622124462253:web:5bdb161510125193049624"
+};
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Initialize reCAPTCHA
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+      size: 'normal',
+      callback: (response) => {
+        console.log("reCAPTCHA solved");
+      }
+    });
+
+    recaptchaVerifier.render();
+
+    function sendOTP() {
+      const phoneNumber = document.getElementById("phone").value;
+      const appVerifier = window.recaptchaVerifier;
+
+      auth.signInWithPhoneNumber(phoneNumber, appVerifier)
+        .then(confirmationResult => {
+          window.confirmationResult = confirmationResult;
+          alert("OTP sent!");
+        })
+        .catch(error => {
+          console.error("Error sending OTP:", error);
+          alert("Error sending OTP: " + error.message);
+        });
+    }
+
+    function verifyOTP() {
+      const otp = document.getElementById("otp").value;
+
+      if (!window.confirmationResult) {
+        alert("No OTP request found. Please send OTP first.");
+        return;
+      }
+
+      window.confirmationResult.confirm(otp)
+        .then(result => {
+          alert("Phone number verified!");
+          console.log("User:", result.user);
+        })
+        .catch(error => {
+          console.error("OTP verification failed:", error);
+          alert("Invalid OTP: " + error.message);
+        });
+    }
+  </script>
+</body>
+</html>

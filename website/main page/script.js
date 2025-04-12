@@ -1,3 +1,7 @@
+
+
+
+
 const reg_btn = document.getElementById('register-btn');
 const login_btn = document.getElementById('login-btn');
 

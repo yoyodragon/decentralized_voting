@@ -394,7 +394,7 @@ async function login() {
     console.log(account);
     try {
         const result = await contract.methods.login().call({ from: account });
-        window.location.href = "../voter/main.html";
+        //window.location.href = "../voter/main.html";
         
     } catch (err) {
         alert("Not registered");
