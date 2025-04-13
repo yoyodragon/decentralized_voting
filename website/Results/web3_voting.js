@@ -408,3 +408,38 @@ async function getAllCandidates() {
     output += "</ul>";
     document.getElementById("winnerDisplay").innerHTML = output;
 }
+
+
+async function loadVotes() {
+	if (window.ethereum) {
+	  const web3 = new Web3(window.ethereum);
+	  await window.ethereum.request({ method: 'eth_requestAccounts' });
+
+	  const contract = new web3.eth.Contract(contractABI, contractAddress);
+
+	  try {
+		const [names, votes] = await contract.methods.getLiveVoteCount().call();
+
+		const voteMap = new Map();
+		for (let i = 0; i < names.length; i++) {
+		  voteMap.set(names[i], parseInt(votes[i]));
+		}
+
+		let displayText = "";
+		voteMap.forEach((votes, name) => {
+		  displayText += `${name}: ${votes} votes\n`;
+		});
+
+		document.getElementById("voteMapOutput").textContent = displayText;
+		return voteMap;
+	  } catch (err) {
+		document.getElementById("voteMapOutput").textContent = "Error fetching votes: " + err;
+		return new Map();
+	  }
+	} else {
+	  alert("Please install MetaMask to use this feature.");
+	  return new Map();
+	}
+  }
+
+  window.loadVotes = loadVotes;

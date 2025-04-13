@@ -1,52 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <title>Vote</title>
+  
+    <meta charset="UTF-8">
   <title>Voter Page</title>
   <link rel="stylesheet" href="./style.css">
   <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <style>
     
+  </style>
 </head onload = "loadWeb3();">
-<body >
-    
-  <div class="navbar">
-    <div>Voter Portal</div>
-    <button onclick="window.location.href='..\\Results\\main.html'" class="nav-right">Go To Results.</button>
-  </div>
-  
-  <div class="vote-section">
-    <h2>Select Your Candidate</h2>
-    <form id="voteForm">
-      <div class="candidate">
-        <img src="OIP.png" alt="Candidate 1">
-        <p>Candidate 1</p>
-        <span>Party A</span><br>
-        <input type="radio" name="candidate" value="Candidate 1">
-      </div>
+<body>
+  <nav>
+    <h2>Voter Portal</h2>
+    <button onclick="window.location.href='..\\Results\\main.html'">Go To Results.</button>
+  </nav>
 
-      <div class="candidate">
-        <img src="OIP.png" alt="Candidate 2">
-        <p>Candidate 2</p>
-        <span>Party B</span><br>
-        <input type="radio" name="candidate" value="Candidate 2">
-      </div>
+  <h1>Select Your Candidate</h1>
 
-      
+  <form id="voteForm">
+    <div class="candidate-options" id="candidatesDiv"></div>
+    <button type="submit">Submit Vote</button>
+  </form>
 
-      <br><button type="submit" class="submit-btn" onclick = "vote();">Submit Vote</button>
-    </form>
-  </div>
+  <script>
+    // Map of candidates to vote counts
+    const candidateMap = new Map([
+      ["Alice", 0],
+      ["Bob", 0],
+      ["Charlie", 0]
+    ]);
 
-  <div class="popup" id="popup">
-    <p id="popupMessage"></p>
-    <button onclick="closePopup()" class="submit-btn">Close</button>
-  </div>
+    const candidatesDiv = document.getElementById("candidatesDiv");
+    const defaultImg = "OIP.png";
 
+    // Render candidate cards
+    candidateMap.forEach((_, name) => {
+      const label = document.createElement("label");
+      label.className = "candidate";
+
+      const img = document.createElement("img");
+      img.src = defaultImg;
+      img.alt = name;
+
+      const nameEl = document.createElement("h3");
+      nameEl.textContent = name;
+
+      const radio = document.createElement("input");
+      radio.type = "radio";
+      radio.name = "candidate";
+      radio.value = name;
+
+      label.appendChild(img);
+      label.appendChild(nameEl);
+      label.appendChild(radio);
+
+      candidatesDiv.appendChild(label);
+    });
+
+    document.getElementById("voteForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      const selected = document.querySelector('input[name="candidate"]:checked');
+      if (selected) {
+        const candidate = selected.value;
+        candidateMap.set(candidate, candidateMap.get(candidate) + 1);
+        
+        var i = 0;
+        for (const[key,value] of candidateMap){
+            if (key == candidate){
+                vote(i);
+            }
+            i = i+1;
+        }
+        alert("You voted for: " + candidate + "\nTotal votes for " + candidate + ": " + candidateMap.get(candidate));
+        window.location.href='..\\Results\\main.html';
+      } else {
+        alert("Please select a candidate before submitting.");
+      }
+    });
+
+    function goToResults() {
+      alert("You will be redirected to the results page (functionality not implemented).");
+      // Example: window.location.href = "results.html";
+    }
+  </script>
   <script src = "script.js"></script>
   <script src = "../web3/web3_voting.js"></script>
-
 </body>
-
-
-
 </html>
