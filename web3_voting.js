@@ -59,8 +59,16 @@ async function stopVoting() {
 }
 
 async function register() {
+	
 	const accounts = await web3.eth.getAccounts();
 	const account = accounts[0];
+
+	const isRegistered = await contract.methods.voters(account).call();
+
+    if (isRegistered.registered) {
+      alert("You are already registered.");
+      return;
+    }
 	console.log(contract.methods.register);
     await contract.methods.register().send({ from: account });
 	
@@ -72,7 +80,7 @@ async function login() {
     console.log(account);
     try {
         const result = await contract.methods.login().call({ from: account });
-        window.location.href = "website\\voter\\main.html";
+        
         
     } catch (err) {
         alert("Not registered");
@@ -80,9 +88,27 @@ async function login() {
 }
 
 async function vote(index) {
+    if (!contract) {
+        console.error("Contract not initialized.");
+        return;
+      }
     
     const account = await getAccount();
+    const hasVoted = await contract.methods.voters(account).call();
+    const votingActive = await contract.methods.votingActive().call();
+    if (hasVoted.voted) {
+        alert("You have already voted!");
+        return;
+    }
+    
+
+  if (!votingActive) {
+    alert("Voting is not currently active.");
+    return;
+  }
+  
     await contract.methods.vote(index).send({ from: account });
+    window.location.href='..\\Results\\main.html';
     return 1;
 }
 
@@ -94,7 +120,7 @@ async function declareWinner() {
 async function viewWinner() {
     try {
         const result = await contract.methods.viewWinner().call();
-        document.getElementById("winnerDisplay").innerText = `Winner: ${result[0]}, Votes: ${result[1]}`;
+        document.getElementById("winnerDisplay").innerText = `Winner: ${result[0]}\nVotes: ${result[1]}`;
     } catch {
         document.getElementById("winnerDisplay").innerText = "Winner not declared yet.";
     }

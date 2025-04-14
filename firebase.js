@@ -34,10 +34,12 @@ const firebaseConfig = {
         const user = userCredential.user;
         if (user.emailVerified) {
           document.getElementById('status').innerText = "Signed in (email verified)";
+          
         } else {
           
           document.getElementById('status').innerText = "Signed in, but email not verified.";
         }
+        window.location.href = "website\\voter\\main.html";
       })
       .catch((error) => {
         document.getElementById('status').innerText = "Error: " + error.message;

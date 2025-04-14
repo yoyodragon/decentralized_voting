@@ -12,6 +12,20 @@ canvas {
     max-height: 70vh;
   }
 
+
+  #container{
+    display:flex;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  #winnerDisplay{
+    display: flex;
+    font-size: 35px;
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+    justify-items: center;
+    align-items: center;
+  }
 /* Navbar */
 .navbar {
     display: flex;

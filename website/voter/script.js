@@ -112,8 +112,8 @@
           }
           i = i+1;
       }
-      alert("You voted for: " + candidate + "\nTotal votes for " + candidate + ": " + candidateMap.get(candidate));
-      window.location.href='..\\Results\\main.html';
+      
+      
     } else {
       alert("Please select a candidate before submitting.");
     }

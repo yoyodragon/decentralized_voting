@@ -1,7 +1,12 @@
-body{
-    padding:0px;
-    margin:0px;
-}
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    max-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    max-width: 100%;
+  }
 
 #login-flex{
     display: flex;
@@ -30,11 +35,12 @@ body{
 
 #login-box{
     background-color: aquamarine;
-    height:99.5%;
+    height:100%;
     border: 1px solid black;
     width:99%;
     flex:1.5;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    
     
 }
 #blank{
