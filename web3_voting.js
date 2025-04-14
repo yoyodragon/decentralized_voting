@@ -59,7 +59,7 @@ async function stopVoting() {
 }
 
 async function register() {
-	
+	console.log("Contract address:", contract.options.address);
 	const accounts = await web3.eth.getAccounts();
 	const account = accounts[0];
 
