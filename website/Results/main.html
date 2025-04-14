@@ -11,19 +11,22 @@
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     
 </head onload = "loadWeb3();">
-<body onload = "getAllCandidates();">
+<body >
     <nav class="navbar">
         <div class="nav-left">Election Results</div>
-        <button class="nav-right" onclick="window.location.href='..\\main page\\main.html'">Back</button>
+        <button class="nav-right" onclick="window.location.href='..\\..\\index.html'">Back</button>
+     
     </nav>
     
  
     <canvas id="myPieChart" width="200" height="200"></canvas>
-    <div id = "winnerDisplay" onload = "viewWinner();">
-        Winner: Candidate 1
+    <div id = "winnerDisplay">
+        Winner: Tie
 
     </div>
-    <script src = "../web3/web3_voting.js"></script>
-    <script src="script.js"></script>
+    <script src = "..\..\web3_voting.js"></script>
+    <script type = "module" src="script.js">
+        loadVotes();
+    </script>
 </body>
 </html>

@@ -12,7 +12,9 @@ const email = document.getElementById('email');
 const pass_box = document.getElementById('pass');
 const adhaar_box = document.getElementById('adhaar');
 
-
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 document.getElementById('signin').addEventListener('click', () => {
   const email = document.getElementById('email').value.trim();

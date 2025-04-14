@@ -10,7 +10,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
         
-    </head onload = "loadWeb3();">
+    </head onload = "loadWeb3();delay(3000);">
     <body>
         
         <div>
@@ -65,8 +65,8 @@
                             <div style = "flex:1;height:100%;width:50%; padding-top: 5%; color: red;" id = "status"></div>
                         </div>
                         <div id = "submit">
-                            <button onclick="signUp(); register();" id = "signup">Sign Up</button>
-                            <button onclick="signIn(); login();" id = "signin">Sign In</button>
+                            <button onclick=" register();signUp();" id = "signup">Sign Up</button>
+                            <button onclick="login();signIn(); " id = "signin">Sign In</button>
                             <button onclick="sendVerification()" id = "verify">Send Verification Email</button>
 
                         </div>

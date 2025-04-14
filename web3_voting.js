@@ -1,318 +1,21 @@
 let web3;
 let contract;
-const contractAddress = '0x9879B815Dbbc1fCf7f411ca9e547a35b3cE2CCC3';
-const abi = 
-[
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "name",
-				"type": "string"
-			}
-		],
-		"name": "addCandidate",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "string",
-				"name": "name",
-				"type": "string"
-			}
-		],
-		"name": "CandidateAdded",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "index",
-				"type": "uint256"
-			}
-		],
-		"name": "CandidateRemoved",
-		"type": "event"
-	},
-	{
-		"inputs": [],
-		"name": "declareWinner",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "register",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "index",
-				"type": "uint256"
-			}
-		],
-		"name": "removeCandidate",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "startVoting",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "stopVoting",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "candidateIndex",
-				"type": "uint256"
-			}
-		],
-		"name": "vote",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "address",
-				"name": "voter",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "candidateIndex",
-				"type": "uint256"
-			}
-		],
-		"name": "VoteCast",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [],
-		"name": "VotingStarted",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [],
-		"name": "VotingStopped",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "string",
-				"name": "name",
-				"type": "string"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "voteCount",
-				"type": "uint256"
-			}
-		],
-		"name": "WinnerDeclared",
-		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "candidates",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "name",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "voteCount",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "chairperson",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getLiveVoteCount",
-		"outputs": [
-			{
-				"internalType": "string[]",
-				"name": "",
-				"type": "string[]"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "",
-				"type": "uint256[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "login",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "viewWinner",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "voters",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "registered",
-				"type": "bool"
-			},
-			{
-				"internalType": "bool",
-				"name": "voted",
-				"type": "bool"
-			},
-			{
-				"internalType": "uint256",
-				"name": "vote",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "votingActive",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "winnerDeclared",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "winningCandidateIndex",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	}
-];
+
 
 window.addEventListener('load', async () => {
     if (window.ethereum) {
         web3 = new Web3(window.ethereum);
         await window.ethereum.request({ method: 'eth_requestAccounts' });
 
-        contract = new web3.eth.Contract(abi, contractAddress);
+        const response = await fetch('https://yoyodragon.github.io/decentralized_voting/address.json');
+		const {address, abi} = await response.json();
+		contract = new web3.eth.Contract(abi, address);
+
+		if (contract) {
+            console.log("Contract initialized successfully:", contract);
+        } else {
+            console.error("Contract is not initialized.");
+        }
 
         try {
             const chair = await contract.methods.chairperson().call();
@@ -325,6 +28,7 @@ window.addEventListener('load', async () => {
     } else {
         alert("Please install MetaMask to use this DApp.");
     }
+	
 });
 
 async function getAccount() {
@@ -355,8 +59,11 @@ async function stopVoting() {
 }
 
 async function register() {
-    const account = await getAccount();
+	const accounts = await web3.eth.getAccounts();
+	const account = accounts[0];
+	console.log(contract.methods.register);
     await contract.methods.register().send({ from: account });
+	
 }
 
 async function login() {
@@ -393,36 +100,81 @@ async function viewWinner() {
     }
 }
 
-async function getAllCandidates() {
-    const candidateList = [];
-    let index = 0;
+// async function getAllCandidates() {
+//     const candidateList = [];
+//     let index = 0;
 
-    while (true) {
-        try {
-            const candidate = await contract.methods.candidates(index).call();
-            candidateList.push(candidate);
-            index++;
-        } catch (error) {
-            // Reached the end of the candidates array
-            break;
-        }
-    }
+//     while (true) {
+//         try {
+// 			(async () => {
+// 				try {
+// 				  const candidate = await contract.methods.candidates(0).call();
+// 				  console.log("Candidate at index 0:", candidate);
+// 				} catch (err) {
+// 				  console.error("Error fetching candidate:", err.message);
+// 				}
+// 			  })();
+//             const candidate = await contract.methods.candidates(index).call();
+//             candidateList.push(candidate);
+// 			console.log(candidate);
+//             index++;
+//         } catch (error) {
+//             // Reached the end of the candidates array
+//             break;
+//         }
+//     }
 
-    if (candidateList.length === 0) {
-        console.log("No candidates found.");
-        return;
-    }
+//     if (candidateList.length === 0) {
+//         console.log("No candidates found.");
+        
+//     }
+	
+//     console.log("Candidates and Votes:");
+//     candidateList.forEach((c, i) => {
+//         console.log(`Index ${i}: ${c.name} - Votes: ${c.voteCount}`);
+//     });
 
-    console.log("Candidates and Votes:");
-    candidateList.forEach((c, i) => {
-        console.log(`Index ${i}: ${c.name} - Votes: ${c.voteCount}`);
-    });
+//     // Optional: Display on page
+// 	return candidateList;
+    
+// }
 
-    // Optional: Display on page
-    let output = "<ul>";
-    candidateList.forEach((c, i) => {
-        output += `<li>Index ${i}: ${c.name} - Votes: ${c.voteCount}</li>`;
-    });
-    output += "</ul>";
-    document.getElementById("winnerDisplay").innerHTML = output;
-}
+async function loadVotes() {
+	console.log("Loaded contract:", contract);
+	if (window.ethereum ) {
+	  
+
+	  try {
+		const result = await contract.methods.getLiveVoteCount().call();
+		console.log("getLiveVoteCount result:", result);
+  
+		const names = result[0];
+		const votes = result[1];
+
+		const voteMap = new Map();
+		for (let i = 0; i < names.length; i++) {
+		  voteMap.set(names[i], parseInt(votes[i]));
+		}
+
+		let displayText = "";
+		voteMap.forEach((votes, name) => {
+		  displayText += `${name}: ${votes} votes\n`;
+		});
+
+		console.log(displayText);
+		return voteMap;
+	  } catch (err) {
+		console.log("Error fetching votes: " + err);
+		return new Map();
+	  }
+	} else {
+	  alert("Please install MetaMask to use this feature.");
+	  return new Map();
+	}
+  }
+  
+window.loadVotes = loadVotes;
+  
+
+  
+
