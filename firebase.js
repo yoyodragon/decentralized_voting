@@ -35,6 +35,7 @@ const firebaseConfig = {
         if (user.emailVerified) {
           document.getElementById('status').innerText = "Signed in (email verified)";
         } else {
+          
           document.getElementById('status').innerText = "Signed in, but email not verified.";
         }
       })

@@ -399,8 +399,17 @@ async function getAllCandidates() {
 
     while (true) {
         try {
+			(async () => {
+				try {
+				  const candidate = await contract.methods.candidates(0).call();
+				  console.log("Candidate at index 0:", candidate);
+				} catch (err) {
+				  console.error("Error fetching candidate:", err.message);
+				}
+			  })();
             const candidate = await contract.methods.candidates(index).call();
             candidateList.push(candidate);
+			console.log(candidate);
             index++;
         } catch (error) {
             // Reached the end of the candidates array
@@ -410,19 +419,16 @@ async function getAllCandidates() {
 
     if (candidateList.length === 0) {
         console.log("No candidates found.");
-        return;
+        
     }
-
+	
     console.log("Candidates and Votes:");
     candidateList.forEach((c, i) => {
         console.log(`Index ${i}: ${c.name} - Votes: ${c.voteCount}`);
     });
 
     // Optional: Display on page
-    let output = "<ul>";
-    candidateList.forEach((c, i) => {
-        output += `<li>Index ${i}: ${c.name} - Votes: ${c.voteCount}</li>`;
-    });
-    output += "</ul>";
-    document.getElementById("winnerDisplay").innerHTML = output;
+	return candidateList;
+    
 }
+

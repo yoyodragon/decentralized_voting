@@ -1,6 +1,6 @@
 let web3;
 let contract;
-const contractAddress = '0xABf722816aBbD492BD9790c974Dd3E34346330bc';
+const contractAddress = '0x9879B815Dbbc1fCf7f411ca9e547a35b3cE2CCC3';
 const abi = 
 [
 	{
@@ -183,6 +183,24 @@ const abi =
 				"internalType": "address",
 				"name": "",
 				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getLiveVoteCount",
+		"outputs": [
+			{
+				"internalType": "string[]",
+				"name": "",
+				"type": "string[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
 			}
 		],
 		"stateMutability": "view",
@@ -411,6 +429,7 @@ async function getAllCandidates() {
 
 
 async function loadVotes() {
+	console.log("Loaded contract:", contract);
 	if (window.ethereum) {
 	  const web3 = new Web3(window.ethereum);
 	  await window.ethereum.request({ method: 'eth_requestAccounts' });

@@ -24,14 +24,11 @@
     <div class="candidate-options" id="candidatesDiv"></div>
     <button type="submit">Submit Vote</button>
   </form>
-
-  <script>
+  <script src = "web3_voting.js"></script>
+  <script src = "script.js"></script>
+  <script type="module">
     // Map of candidates to vote counts
-    const candidateMap = new Map([
-      ["Alice", 0],
-      ["Bob", 0],
-      ["Charlie", 0]
-    ]);
+    const candidateMap = await getAllCandidates();
 
     const candidatesDiv = document.getElementById("candidatesDiv");
     const defaultImg = "OIP.png";
@@ -86,7 +83,7 @@
       // Example: window.location.href = "results.html";
     }
   </script>
-  <script src = "script.js"></script>
-  <script src = "../web3/web3_voting.js"></script>
+  
+  
 </body>
 </html>
