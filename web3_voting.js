@@ -103,10 +103,10 @@ async function vote(index) {
         alert("You have already voted!");
         return;
     }
-//   if (!votingActive) {
-//     alert("Voting is not currently active.");
-//     return;
-//   }
+  if (!votingActive) {
+    alert("Voting is not currently active.");
+    return;
+  }
   
     await contract.methods.vote(index).send({ from: account });
     window.location.href='..\\Results\\main.html';
