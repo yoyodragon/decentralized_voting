@@ -76,7 +76,8 @@ async function register() {
 
 async function login() {
     
-    const account = await getAccount();
+    const accounts = await web3.eth.getAccounts();
+    account = accounts[0];
     console.log(account);
     try {
         const result = await contract.methods.login().call({ from: account });
@@ -93,19 +94,19 @@ async function vote(index) {
         return;
       }
     
-    const account = await getAccount();
-    const hasVoted = await contract.methods.voters(account).call();
+    const accounts = await web3.eth.getAccounts();
+    account = accounts[0];
     const votingActive = await contract.methods.votingActive().call();
+    const hasVoted = await contract.methods.voters(account).call();
+    
     if (hasVoted.voted) {
         alert("You have already voted!");
         return;
     }
-    
-
-  if (!votingActive) {
-    alert("Voting is not currently active.");
-    return;
-  }
+//   if (!votingActive) {
+//     alert("Voting is not currently active.");
+//     return;
+//   }
   
     await contract.methods.vote(index).send({ from: account });
     window.location.href='..\\Results\\main.html';

@@ -96,7 +96,11 @@
     label.appendChild(radio);
 
     candidatesDiv.appendChild(label);
+    
+
   });
+
+
 
   document.getElementById("voteForm").addEventListener("submit", function (event) {
     event.preventDefault();
@@ -118,6 +122,9 @@
       alert("Please select a candidate before submitting.");
     }
   });
+  // Example: Refresh candidate list
+
+
 
   function goToResults() {
     alert("You will be redirected to the results page (functionality not implemented).");

@@ -52,6 +52,8 @@
       }
     });
     viewWinner();
+    
+
   
   } else {
     console.error("Contract still not initialized after waiting.");
