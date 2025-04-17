@@ -3,7 +3,7 @@ pragma solidity >=0.7.0 <0.9.0;
 
 contract VotingSystem {
     struct Candidate {
-        string name; // Candidate's name
+        string name;
         uint voteCount;
     }
 
@@ -17,6 +17,7 @@ contract VotingSystem {
     bool public votingActive = false;
     Candidate[] public candidates;
     mapping(address => Voter) public voters;
+    address[] public registeredVoters; // 👈 new array to track registered voters
     uint public winningCandidateIndex;
     bool public winnerDeclared = false;
 
@@ -63,13 +64,20 @@ contract VotingSystem {
         require(votingActive, "Voting is not active.");
         votingActive = false;
         emit VotingStopped();
+
+        // 👇 Clear all voter registrations and votes
+        for (uint i = 0; i < registeredVoters.length; i++) {
+            delete voters[registeredVoters[i]];
+        }
+        delete registeredVoters;
     }
 
     function register() public {
         require(!votingActive, "Registration closed. Voting has started.");
         require(!voters[msg.sender].registered, "You are already registered.");
-        
+
         voters[msg.sender].registered = true;
+        registeredVoters.push(msg.sender); // 👈 Save for cleanup
     }
 
     function login() public view returns (string memory) {
@@ -111,7 +119,6 @@ contract VotingSystem {
         return (candidates[winningCandidateIndex].name, candidates[winningCandidateIndex].voteCount);
     }
 
-    // ✅ New Function: See Live Vote Count
     function getLiveVoteCount() public view returns (string[] memory, uint[] memory) {
         string[] memory names = new string[](candidates.length);
         uint[] memory votes = new uint[](candidates.length);
